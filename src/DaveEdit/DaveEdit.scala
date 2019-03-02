@@ -1,5 +1,0 @@
-package DaveEdit
-
-class DaveEdit {
-
-}
