@@ -47,13 +47,6 @@ import Project.objects._
       }
     }
 
-    def kill(name: String): Map[String, Player] = {
-      if (playerMap.keySet.contains(name)) {
-        playerMap -= name
-      }
-      playerMap
-    }
-
     def fight(player1: Player, player2: Player): Unit = {
       val random = scala.util.Random
       if(player1.tokenAmount > player2.tokenAmount){
@@ -77,6 +70,13 @@ import Project.objects._
       }
     }
 
+    def kill(name: String): Map[String, Player] = {
+      if (playerMap.keySet.contains(name)) {
+        playerMap -= name
+      }
+      playerMap
+    }
+
     def main(args: Array[String]): Unit = {
       val Sam: Player = new Player("Sam", 5, 5)
       Sam.tokenAmount = 5
@@ -84,8 +84,8 @@ import Project.objects._
       playerMap += ("Dave" -> Dave)
       playerMap += ("Sam" -> Sam)
 //      println(playerMap)
-      hitdetection(playerMap("Sam"), playerMap("Dave"))
-      println(playerMap)
+      println(hitdetection(playerMap("Sam"), playerMap("Dave")))
+//      println(playerMap)
     }
   }
 
