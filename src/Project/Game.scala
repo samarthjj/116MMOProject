@@ -25,9 +25,11 @@ class Game
     }
   }
 
+  val databasemap: Map[String, Int] = Map("Sam" -> 1, "")
+
   def kill(player: Player): Unit = {
     if(databasemap.keySet.contains(player)){
-
+      databasemap -- player
     }
   }
 
