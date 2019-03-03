@@ -47,12 +47,11 @@ class Game
     }
   }
 
-  val databasemap: Map[String, Int] = Map("Sam" -> 1, "")
-
-  def kill(player: Player): Unit = {
-    if(databasemap.keySet.contains(player)){
-      databasemap -- player
+  def kill(name: String): Map[String, Map[String, Int]] = {
+    if (playerMap.keySet.contains(name)) {
+      playerMap -= name
     }
+    playerMap
   }
 
   def fight(player1: Player, player2: Player): Unit = {
@@ -60,21 +59,26 @@ class Game
     if(player1.tokenAmount > player2.tokenAmount){
       player1.tokenAmount += player2.tokenAmount
       player2.tokenAmount = 0
-      kill(player2)
+      kill(player2.name)
     }
     if(player1.tokenAmount < player2.tokenAmount){
       player2.tokenAmount += player1.tokenAmount
       player1.tokenAmount = 0
-      kill(player1)
+      kill(player1.name)
     }
     else{
       val killvalue = random.nextInt(100)
       if(killvalue <= 50){
-        kill(player1)
+        kill(player1.name)
       }
       if(killvalue > 50){
-        kill(player2)
+        kill(player2.name)
       }
     }
+  }
+
+  def main(args: Array[String]): Unit = {
+    val contents = kill("Sam")
+    print(contents)
   }
 }
