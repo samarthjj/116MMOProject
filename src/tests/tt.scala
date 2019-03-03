@@ -1,5 +1,6 @@
 package tests
 
-class tt {
+class tt
+{
 
 }
