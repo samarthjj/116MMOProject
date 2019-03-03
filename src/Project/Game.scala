@@ -7,6 +7,7 @@ class Game
   var playerMap: Map[String, Map[String, Int]] = Map()
   /*
     update spawnPLayer with placing a player into a larger map of players
+    ss
    */
   def spawnPlayer(name: String): Unit =
   {
