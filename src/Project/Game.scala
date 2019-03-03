@@ -46,7 +46,7 @@ class Game
     }
   }
 
-  def kill(name: String): Map[String, Map[String, Int]] = {
+  def kill(name: String): Map[String, Player] = {
     if (playerMap.keySet.contains(name)) {
       playerMap -= name
     }
