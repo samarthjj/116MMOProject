@@ -18,4 +18,39 @@ class Game
 
     val player: Player = new Player("name",x ,y)
   }
+
+  def hitdetection(player1: Player ,player2: Player): Unit = {
+    if(player1.xPosition == player2.xPosition && player1.yPosition == player2.yPosition){
+      fight(player1, player2)
+    }
+  }
+
+  def kill(player: Player): Unit = {
+    if(databasemap.keySet.contains(player)){
+
+    }
+  }
+
+  def fight(player1: Player, player2: Player): Unit = {
+    val random = scala.util.Random
+    if(player1.tokenAmount > player2.tokenAmount){
+      player1.tokenAmount += player2.tokenAmount
+      player2.tokenAmount = 0
+      kill(player2)
+    }
+    if(player1.tokenAmount < player2.tokenAmount){
+      player2.tokenAmount += player1.tokenAmount
+      player1.tokenAmount = 0
+      kill(player1)
+    }
+    else{
+      val killvalue = random.nextInt(100)
+      if(killvalue <= 50){
+        kill(player1)
+      }
+      if(killvalue > 50){
+        kill(player2)
+      }
+    }
+  }
 }
