@@ -13,31 +13,43 @@ class Game
   def spawnPlayer(name: String): Unit =
   {
     val random = scala.util.Random
-    val x: Int = 1 + random.nextInt((99 - 1) + 1)
-    val y: Int = 1 + random.nextInt((99 - 1) + 1)
+    val x: Int = 1 + random.nextInt((37 - 1) + 1)
+    val y: Int = 1 + random.nextInt((18 - 1) + 1)
       // this generates a random number between 1 and 99 (both inclusive)
     val player: Player = new Player(name,x ,y)
     playerMap = playerMap + (name -> player)
   }
-
+  //based on 20 by 39 map
   def move(input: String, player: Player): Unit =
   {
     val inputLower = input.toLowerCase()
     if(inputLower == "w")
       {
-        player.yPosition -= 1
+        if((player.yPosition - 1) != 0 && (player.yPosition - 1) != 18)
+          {
+            player.yPosition -= 1
+          }
       }
     else if(inputLower == "a")
       {
-        player.xPosition -= 1
+        if((player.xPosition - 1) != 0 && (player.xPosition - 1) != 37)
+        {
+          player.xPosition -= 1
+        }
       }
     else if(inputLower == "s")
       {
-        player.yPosition += 1
+        if((player.yPosition + 1) != 0 && (player.yPosition - 1) != 18)
+        {
+          player.yPosition -= 1
+        }
       }
     else if(inputLower == "d")
       {
-        player.xPosition += 1
+        if((player.xPosition + 1) != 0 && (player.xPosition + 1) != 37)
+        {
+          player.xPosition += 1
+        }
       }
   }
 
@@ -75,10 +87,5 @@ class Game
         kill(player2.name)
       }
     }
-  }
-
-  def main(args: Array[String]): Unit = {
-    val contents = kill("Sam")
-    print(contents)
   }
 }
