@@ -21,7 +21,7 @@ var map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
-var players = {"Player1": {}}
+var players = {"Player1": {"xvalue": 5, "yvalue": 10}, "Player2": {"xvalue": 28, "yvalue": 14}};
 
 function draw() {
     var c = document.getElementById("myCanvas");
@@ -49,6 +49,8 @@ function draw() {
     button.parentNode.removeChild(button);
     var text = document.getElementById("Nick");
     text.parentNode.removeChild(text);
+
+    loadPlayers(JSON.stringify(players));
 }
 
 function ajaxGetRequest(path, callback){
@@ -78,12 +80,13 @@ function getPlayers(){
 }
 
 function loadPlayers(response){
-    var mapped = JSON.loads(response);
-    var ctx = document.getElementById("myCanvas").getContext("2d");
+    var mapped = JSON.parse(response);
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
     var playImg = new Image();
     playImg.src = "player.png";
     playImg.alt = "none";
-    for(key in mapped){
-        ctx.drawImage(playImg, 32 * key["yvalue"], 32 * key["xvalue"], 32, 32)
+    for(var x = 0; x < Object.keys(mapped).length; x++) {
+        ctx.drawImage(playImg, 32 * Object.values(mapped)[x]["xvalue"], 32 * Object.values(mapped)[x]["yvalue"], 32, 32)
     }
 }
