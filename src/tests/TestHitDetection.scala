@@ -9,6 +9,9 @@ class TestHitDetection extends FunSuite{
   test("Hit Detection Tested"){
     val game = new Game
 
+    /*
+    spawns 2 players on the same position and one has a higher token the other
+     */
     val Sam: Player = new Player("Sam", 5, 5)
     Sam.tokenAmount = 9
     val Dave: Player = new Player("Dave", 5, 5)
@@ -17,6 +20,7 @@ class TestHitDetection extends FunSuite{
     game.playerMap += ("Sam" -> Sam)
     game.playerMap += ("Dave" -> Dave)
     game.hitdetection(Sam, Dave)
+
 
     assert(game.playerMap.size == 1)
     assert(game.playerMap.keySet.contains("Sam"))

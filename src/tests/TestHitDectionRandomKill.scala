@@ -4,7 +4,7 @@ import org.scalatest._
 import Project._
 import Project.objects.Player
 
-class TestKill extends FunSuite{
+class TestHitDetectionRandomKill extends FunSuite{
 
     test("Random Kill Tested"){
       val game = new Game
