@@ -9,13 +9,13 @@ import org.mongodb.scala._
 
 
     def main(args: Array[String]): Unit = {
-      val random = scala.util.Random
-      for (y <- 1 to 100)
-        {
-          val x: Int = 1 + random.nextInt((37 - 1) + 1)
-          val y: Int = 1 + random.nextInt((18- 1) + 1)
-          println(x, y)
-        }
+      var randomNameList: List[String] = List()
+      val random = new scala.util.Random()
+      for (i <- 1 to 10000) {
+        val x: Int = 1 + random.nextInt((37 - 1) + 1)
+        val y: Int = 1 + random.nextInt((18 - 1) + 1)
+        println(x, y)
+      }
 
     }
   }

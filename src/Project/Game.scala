@@ -15,7 +15,8 @@ class Game
     val random = scala.util.Random
     val x: Int = 1 + random.nextInt((37 - 1) + 1)
     val y: Int = 1 + random.nextInt((18 - 1) + 1)
-      // this generates a random number between 1 and 99 (both inclusive)
+      // this generates a random number between 1 and 37 for x (both inclusive)
+      // and a random number between 1 and 18 for y
     val player: Player = new Player(name,x ,y)
     playerMap = playerMap + (name -> player)
   }
@@ -41,7 +42,7 @@ class Game
       {
         if((player.yPosition + 1) != 0 && (player.yPosition - 1) != 18)
         {
-          player.yPosition -= 1
+          player.yPosition += 1
         }
       }
     else if(inputLower == "d")
