@@ -22,13 +22,16 @@ class TestSpawn extends FunSuite
       }
 
     //This for loop checks that the player created is in the larger dictionary
-    //this also checks that the player does not have x and y coordinates that is on a wall
     for (x <- randomNameList)
       {
         game.spawnPlayer(x)
         assert(game.playerMap.keySet.contains(x), "tests if the player map contains the player with name")
-        val xcord = game.playerMap(x).xPosition
-        val ycord = game.playerMap(x).yPosition
+      }
+    //this checks that each player in the dictionary didn't spawn on a wall
+    for (y <- game.playerMap.values)
+      {
+        val xcord = y.xPosition
+        val ycord = y.yPosition
         assert(checksOnWall(xcord, ycord), "testing if player spawns on the boundary")
       }
   }
