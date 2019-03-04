@@ -1,6 +1,7 @@
 package Project
 
 import objects.Player
+import org.mongodb.scala._
 
 class Game
 {

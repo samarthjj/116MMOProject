@@ -2,6 +2,7 @@ package tests
 
 import Project.Game
 import Project.objects._
+import org.mongodb.scala._
 
   object testing{
 
@@ -79,13 +80,14 @@ import Project.objects._
 
     def main(args: Array[String]): Unit = {
       val Sam: Player = new Player("Sam", 5, 5)
-      Sam.tokenAmount = 5
+      Sam.tokenAmount = 9
       val Dave: Player = new Player("Dave", 5, 5)
+      Dave.tokenAmount = 8
       playerMap += ("Dave" -> Dave)
       playerMap += ("Sam" -> Sam)
-//      println(playerMap)
+      println(playerMap)
       println(hitdetection(playerMap("Sam"), playerMap("Dave")))
-//      println(playerMap)
+      println(playerMap)
     }
   }
 
