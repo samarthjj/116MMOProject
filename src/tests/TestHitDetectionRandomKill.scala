@@ -16,9 +16,10 @@ class TestHitDetectionRandomKill extends FunSuite{
 
       game.playerMap += ("Sam" -> Sam)
       game.playerMap += ("Dave" -> Dave)
+      val maplen = game.playerMap.size
       game.hitdetection(Sam, Dave)
 
-      assert(game.playerMap.size == 1)
+      assert(game.playerMap.size == maplen - 1)
     }
 
 
