@@ -2,10 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <script>src="FrontEndJS.js"</script>
+    <title>Game Demo</title>
+    <script src="FrontEndJS.js"></script>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #1487FF;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {background-color: #36738e
+        }
+
+        .button:active {
+            background-color: #11538e;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
 </head>
-<body onload="draw();">
-<img src="wall.png" alt="fail" height="32" width="32">
+<body style="background-color: #ccffd3">
+<p id="p1" style="margin: 15px; line-height: 1.5; text-align: center;">Nickname:</p>
+<input type="text" name="Nickname" id="Nick" style="position: relative; left: 50%; margin-left: -75px; border-width: medium">
+<p style="margin: 15px; line-height: 1.5; text-align: center;"><button class="button" onclick="draw()" id="Butt">Play</button></p>
+<canvas id="myCanvas" height="640" width="1248"></canvas>
 </body>
 </html>
