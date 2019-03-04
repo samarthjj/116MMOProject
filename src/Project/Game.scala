@@ -41,7 +41,7 @@ class Game
       {
         if((player.yPosition + 1) != 0 && (player.yPosition - 1) != 18)
         {
-          player.yPosition -= 1
+          player.yPosition += 1
         }
       }
     else if(inputLower == "d")
