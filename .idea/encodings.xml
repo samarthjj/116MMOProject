@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM" />
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/60c42fa8-b88d-4c69-a75e-db311cf5b367/console.sql" charset="ISO-8859-1" />
+  </component>
 </project>
