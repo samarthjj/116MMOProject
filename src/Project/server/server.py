@@ -2,6 +2,21 @@ import bottle
 import Project.server.testserver
 
 
+@bottle.route('/')
+def index():
+    return bottle.static_file("map.html", root="")
+
+
+@bottle.route('/frontend')
+def frontend():
+    return bottle.static_file("FrontEnd.js", root="")
+
+
+@bottle.route('/')
+def game():
+    return bottle.static_file("Game.scala", root="")
+
+
 @bottle.route('/join/<username>')
 def join(username='Guest'):
     Project.server.testserver.add_player(username)

@@ -3,27 +3,26 @@ import json
 
 
 def get_players():
-    connect = sqlite3.connect("Project.db")
+    connect = sqlite3.connect("playerrecord.db")
     cur = connect.cursor()
     players = []
-    cur.execute("SELECT username FROM players")
+    cur.execute("SELECT * FROM players")
     for row in cur:
         players.append(row)
-
     return json.dumps(players)
 
 
-def add_player(name):
-    connect = sqlite3.connect("Project.db")
+def add_player(name, x, y, token):
+    connect = sqlite3.connect("playerrecord.db")
     cur = connect.cursor()
-    cur.execute("INSERT INTO players VALUES(?, 0)", (name,))
+    cur.execute("INSERT INTO players VALUES(?,?,?,?)", (name, x, y, token))
     connect.commit()
     connect.close()
 
 
 def remove_player(name):
-    connect = sqlite3.connect("Project.db")
+    connect = sqlite3.connect("playerrecord.db")
     cur = connect.cursor()
-    cur.execute("DELETE FROM players WHERE username=?", (name,))
+    cur.execute("DELETE FROM players WHERE name=?", (name,))
     connect.commit()
     connect.close()
