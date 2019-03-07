@@ -13,13 +13,11 @@ def get_players():
     return json.dumps(players)
 
 
-def add_player(name, x, y, token):
-    cur.execute("INSERT INTO players VALUES(?,?,?,?)", (name, x, y, token))
+def add_player(name):
+    cur.execute("INSERT INTO players VALUES(?,0,0,0)", (name,))
     connect.commit()
-    connect.close()
 
 
 def remove_player(name):
     cur.execute("DELETE FROM players WHERE name=?", (name,))
     connect.commit()
-    connect.close()
