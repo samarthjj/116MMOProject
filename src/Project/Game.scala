@@ -1,10 +1,8 @@
 package Project
 
 import objects.Player
-import org.mongodb.scala._
 
-class Game
-{
+class Game {
   /*
   ALL OF THE FUNCTIONS HERE ESPECIALLY spawnPlayer AND move IS BASED ON THE 39 TILES(X) BY 20 TILES(Y) MAP
   FOR DEMO 1
