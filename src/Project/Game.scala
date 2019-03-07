@@ -1,8 +1,22 @@
 package Project
-
+import sqlite3
+import org.sqlite3
+import java.sql._
+import java.sql.DriverManager
+import java.sql.Connection
+import scala.concurrent.Await
+import scala.concurrent.duration._
+import slick.driver.SQLiteDriver.api._
+import scala.concurrent.ExecutionContext.Implicits.global
+import org.sca
+//import org.sqlite._
 import objects.Player
 
 class Game {
+
+  val conn = sqlite3.connect("playerrecord.db")
+
+//  val db = new SQLiteConnection(new Nothing("/tmp/database"))
   /*
   ALL OF THE FUNCTIONS HERE ESPECIALLY spawnPlayer AND move IS BASED ON THE 39 TILES(X) BY 20 TILES(Y) MAP
   FOR DEMO 1
@@ -92,4 +106,7 @@ class Game {
       }
     }
   }
+//
+//  def to_database(input: String): Unit = {
+//  }
 }
