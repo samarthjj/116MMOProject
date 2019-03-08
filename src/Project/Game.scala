@@ -63,11 +63,12 @@ class Game {
     }
   }
 
-  def kill(name: String): Map[String, Player] = {
-    if (playerMap.keySet.contains(name)) {
+  def kill(name: String): Unit =
+  {
+    if (playerMap.keySet.contains(name))
+    {
       playerMap -= name
     }
-    playerMap
   }
 
   def fight(player1: Player, player2: Player): Unit = {
@@ -85,9 +86,13 @@ class Game {
     else{
       val killvalue = random.nextInt(100)
       if(killvalue <= 50){
+        player2.tokenAmount += player1.tokenAmount
+        player1.tokenAmount = 0
         kill(player1.name)
       }
       if(killvalue > 50){
+        player1.tokenAmount += player2.tokenAmount
+        player2.tokenAmount = 0
         kill(player2.name)
       }
     }
