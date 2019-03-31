@@ -55,6 +55,11 @@ class Game {
           player.xPosition += 1
         }
       }
+    for(player2 <- playerMap.values){
+      if(player.name != player2.name){
+        hitdetection(player, player2)
+      }
+    }
   }
 
   def hitdetection(player1: Player ,player2: Player): Unit = {
@@ -78,7 +83,7 @@ class Game {
       player2.tokenAmount = 0
       kill(player2.name)
     }
-    if(player1.tokenAmount < player2.tokenAmount){
+    else if(player1.tokenAmount < player2.tokenAmount){
       player2.tokenAmount += player1.tokenAmount
       player1.tokenAmount = 0
       kill(player1.name)
