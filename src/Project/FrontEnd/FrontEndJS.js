@@ -1,7 +1,6 @@
 
 /*
 Below map and player list are samples only for demo 1. In the future, this information will be obtained from the
-
 */
 
 var map = [
@@ -27,7 +26,7 @@ var map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
-var players = {"Player1": {"xvalue": 5, "yvalue": 10}, "Player2": {"xvalue": 28, "yvalue": 14}};
+var players = {"Player1": {"xvalue": 5, "yvalue": 10}, "Player2": {"xvalue": 28, "yvalue": 14},  "Player3": {"xvalue": 14, "yvalue": 4}, "Player4": {"xvalue": 36, "yvalue": 16}};
 
 function draw() {
     var c = document.getElementById("myCanvas");
