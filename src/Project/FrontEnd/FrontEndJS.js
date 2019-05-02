@@ -26,72 +26,80 @@ var map = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 
+var socket = io.connect({transports: ['websocket']});
+socket.on('gameState', draw);
+
 var players = {"Player1": {"xvalue": 5, "yvalue": 10}, "Player2": {"xvalue": 28, "yvalue": 14},  "Player3": {"xvalue": 14, "yvalue": 4}, "Player4": {"xvalue": 36, "yvalue": 16}};
 
-function draw() {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var img = new Image();
-    img.src = "wall.png";
-    img.alt = "none";
-    var img2 = new Image();
-    img2.src = "floor.png";
-    img2.alt = "none";
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.globalCompositeOperation = 'source-over';
 
-    for(var x = 0; x < map.length; x+=1) {
-        for (var y = 0; y < map[0].length; y += 1) {
-            if(map[x][y] === 1) {
-                ctx.drawImage(img, 32 * y, 32 * x, 32, 32);
-            }else {
-                ctx.drawImage(img2, 32 * y, 32 * x, 32, 32);
-            }
+function draw(event) {
+    var gs = JSON.parse(event);
+
+    loadGame();
+
+    for(var player in gs){
+        if(player["id"] === socket.id) {
+            setPlayer(player["x"], player["y"], "#FF4500")
+        }else{
+            setPlayer(player["x"], player["y"], "#483d8b")
         }
     }
-
-    var para = document.getElementById("p1");
-    para.parentNode.removeChild(para);
-    var button = document.getElementById("Butt");
-    button.parentNode.removeChild(button);
-    var text = document.getElementById("Nick");
-    text.parentNode.removeChild(text);
-
-    loadPlayers(JSON.stringify(players));
 }
 
-function ajaxGetRequest(path, callback){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if (this.readyState === 4 && this.status === 200){
-            callback(this.response);
-        }
-    };
-    request.open("GET", path);
-    request.send();
+function setPlayer(x, y, color) {
+    ctx.fillStyle = color;
+    ctx.fillRect(x * 32, y * 32, 32, 32);
 }
 
-function ajaxPostRequest(path, data, callback){
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if (this.readyState === 4 && this.status === 200){
-            callback(this.response);
-        }
-    };
-    request.open("POST", path);
-    request.send(data);
-}
-
-function getPlayers(){
-    ajaxGetRequest(path, loadPlayers)
-}
-
-function loadPlayers(response){
-    var mapped = JSON.parse(response);
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    var playImg = new Image();
-    playImg.src = "player.png";
-    playImg.alt = "none";
-    for(var x = 0; x < Object.keys(mapped).length; x++) {
-        ctx.drawImage(playImg, 32 * Object.values(mapped)[x]["xvalue"], 32 * Object.values(mapped)[x]["yvalue"], 32, 32)
+function loadGame(){
+    ctx.strokeStyle = '#000000';
+    for(var i = 0; i < 40; i++){
+        ctx.beginPath();
+        ctx.moveTo(i * 32, 0);
+        ctx.lineTo(i * 32, 640);
+        ctx.stroke();
+    }
+    for(var j = 0; j < 21; j++){
+        ctx.beginPath();
+        ctx.moveTo(0, j * 32);
+        ctx.lineTo(1248, j * 32);
+        ctx.stroke();
     }
 }
+
+var keyStates = {
+    "w": false,
+    "a": false,
+    "s": false,
+    "d": false
+};
+
+function setState(key, toSet){
+    if(keyStates[key] !== toSet){
+        keyStates[key] = toSet;
+        socket.emit("keyStates", JSON.stringify(keyStates));
+    }
+}
+
+function handleEvent(event, toSet){
+    if(event.key === "w" || event.key === "ArrowUp"){
+        setState("w", toSet);
+    }else if(event.key === "a" || event.key === "ArrowLeft"){
+        setState("a", toSet);
+    }else if(event.key === "s" || event.key === "ArrowDown"){
+        setState("s", toSet);
+    }else if(event.key === "d" || event.key === "ArrowRight"){
+        setState("d", toSet);
+    }
+}
+
+document.addEventListener("keydown", function (event) {
+    handleEvent(event, true);
+});
+
+document.addEventListener("keyup", function (event) {
+    handleEvent(event, false);
+});

@@ -1,23 +1,35 @@
-import bottle
-import src.Project.server.testserver
+import json
+import socket
+from threading import Thread
+
+from flask import Flask, send_from_directory, request, render_template
+from flask_socketio import SocketIO
+
+import eventlet
+
+eventlet.monkey_patch()
+
+app = Flask(__name__)
+#socket_server = SocketIO(app)
+
+#scala_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#scala_socket.connect(('localhost', 8000))
 
 
-@bottle.route('/join', method="POST")
-def join():
-    user = bottle.request.body.read().decode("utf-8")[9:]
-    return src.Project.server.testserver.add_player(user)
+@app.route('/')
+def index():
+    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
 
 
-@bottle.route('/leave', method="POST")
-def leave():
-    user = bottle.request.body.read().decode("utf-8")[9:]
-    return src.Project.server.testserver.remove_player(user)
+@app.route('/map', methods=["POST", "GET"])
+def game():
+    username = request.form.get('username')
+    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'map.html')
 
 
-@bottle.route('/')
-@bottle.route('/players')
-def players():
-    return src.Project.server.testserver.get_players()
+@app.route('/<path:filename>')
+def static_files(filename):
+    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', filename)
 
 
-bottle.run(host='localhost', port=8080, debug=True)
+app.run()
