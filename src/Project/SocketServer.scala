@@ -42,8 +42,8 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
   }
 
 
-  def handle(message: String):Unit = {
-    val message: JsValue = Json.parse(message)
+  def handle(messageString: String):Unit = {
+    val message: JsValue = Json.parse(messageString)
     val username = (message \ "username").as[String]
     val messageType = (message \ "action").as[String]
 
@@ -54,7 +54,6 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
         val x = (message \ "x").as[Double]
         val y = (message \ "y").as[Double]
         gameActor ! MovePlayer(username, x, y)
-      case "stop" => gameActor ! StopPlayer(username)
     }
   }
 

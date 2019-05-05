@@ -114,4 +114,8 @@ class Game {
     Json.stringify(Json.toJson(jsonGS))
   }
 
+  def removePlayer(name: String): Unit =
+  {
+    playerMap -= name
+  }
 }
