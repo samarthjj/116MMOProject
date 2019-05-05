@@ -1,6 +1,7 @@
 package Project
 
 import objects.Player
+import play.api.libs.json.{JsValue, Json}
 
 class Game {
   /*
@@ -100,6 +101,14 @@ class Game {
         player2.tokenAmount = 0
         kill(player2.name)
       }
+    }
+  }
+
+  def gameState(): String = {
+    var jsonGS: Map[String, JsValue] = Map()
+
+    for((name, player) <- playerMap){
+      jsonGS += (name -> Json.toJson(Map("x" -> player.xPosition, "y" -> player.yPosition)))
     }
   }
 }

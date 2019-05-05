@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>THE MOST ADDICTIVE GAME</title>
+    <style>
+        button {
+            display: inline-block;
+            padding: 15px 25px;
+            font-size: 24px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #1487FF;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        button:hover {
+            background-color: #36738e
+        }
+
+        button:active {
+            background-color: #11538e;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
 </head>
 <body>
 
-<form style="margin: 15px; line-height: 1.5; text-align: center;" action="/map" method="post">
-    <label>
-        Enter your username:
-        <input type="text" name="username"/>
-    </label>
-    <input type="submit"/>
+<form action="/map" method="post">
+    <button>PLAY</button>
 </form>
 
 </body>

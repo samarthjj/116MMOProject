@@ -21,9 +21,8 @@ def index():
     return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
 
 
-@app.route('/map', methods=["POST", "GET"])
+@app.route('/map', methods=['POST'])
 def game():
-    username = request.form.get('username')
     return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'map.html')
 
 
