@@ -31,19 +31,19 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
       while (buffer.contains("~")) {
         val curr = buffer.substring(0, buffer.indexOf("~"))
         buffer = buffer.substring(buffer.indexOf("~") + 1)
-        handleMessageFromWebServer(curr)
+        handle(curr)
       }
 
-    case SendGameState =>
-      gameActor ! SendGameState
+    case Send =>
+      gameActor ! Send
 
     case gs: GameState =>
-      server ! Write(ByteString(gs.gameState + "~")))
+      server ! Write(ByteString(gs.state + "~"))
   }
 
 
-  def handleMessageFromWebServer(messageString:String):Unit = {
-    val message: JsValue = Json.parse(messageString)
+  def handle(message: String):Unit = {
+    val message: JsValue = Json.parse(message)
     val username = (message \ "username").as[String]
     val messageType = (message \ "action").as[String]
 
