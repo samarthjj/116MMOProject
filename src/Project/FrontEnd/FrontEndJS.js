@@ -70,36 +70,18 @@ function loadGame(){
     }
 }
 
-var keyStates = {
-    "w": false,
-    "a": false,
-    "s": false,
-    "d": false
-};
-
-function setState(key, toSet){
-    if(keyStates[key] !== toSet){
-        keyStates[key] = toSet;
-        socket.emit("keyStates", JSON.stringify(keyStates));
-    }
-}
-
-function handleEvent(event, toSet){
+function handleEvent(event){
     if(event.key === "w" || event.key === "ArrowUp"){
-        setState("w", toSet);
+        socket.emit("keyStates", "w");
     }else if(event.key === "a" || event.key === "ArrowLeft"){
-        setState("a", toSet);
+        socket.emit("keyStates", "a");
     }else if(event.key === "s" || event.key === "ArrowDown"){
-        setState("s", toSet);
+        socket.emit("keyStates", "s");
     }else if(event.key === "d" || event.key === "ArrowRight"){
-        setState("d", toSet);
+        socket.emit("keyStates", "d");
     }
 }
 
 document.addEventListener("keydown", function (event) {
-    handleEvent(event, true);
-});
-
-document.addEventListener("keyup", function (event) {
-    handleEvent(event, false);
+    handleEvent(event);
 });
