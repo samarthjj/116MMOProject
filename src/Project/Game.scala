@@ -108,7 +108,10 @@ class Game {
     var jsonGS: Map[String, JsValue] = Map()
 
     for((name, player) <- playerMap){
-      jsonGS += (name -> Json.toJson(Map("x" -> player.xPosition, "y" -> player.yPosition)))
+      jsonGS += (name -> Json.toJson(Map("x" -> player.xPosition, "y" -> player.yPosition, "tokens" -> player.tokenAmount)))
     }
+
+    Json.stringify(Json.toJson(jsonGS))
   }
+
 }
