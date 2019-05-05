@@ -43,13 +43,13 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
 
 
   def handle(message: String):Unit = {
-    val message: JsValue = Json.parse(message)
-    val username = (message \ "username").as[String]
-    val messageType = (message \ "action").as[String]
+    val action: JsValue = Json.parse(message)
+    val name = (action \ "username").as[String]
+    val messageType = (action \ "action").as[String]
 
     messageType match {
-      case "connected" => gameActor ! AddPlayer(username)
-      case "disconnected" => gameActor ! RemovePlayer(username)
+      case "connected" => gameActor ! AddPlayer(name)
+      case "disconnected" => gameActor ! RemovePlayer(name)
       case "move" =>
         val x = (message \ "x").as[Double]
         val y = (message \ "y").as[Double]
