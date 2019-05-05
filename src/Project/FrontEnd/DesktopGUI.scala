@@ -11,24 +11,24 @@ import io.socket.emitter.Emitter
 import javafx.application.Platform
 import play.api.libs.json.{JsValue, Json}
 
-class HandleMessagesFromPython() extends Emitter.Listener {
+class HandleMessagesFromPython2() extends Emitter.Listener {
   override def call(objects: Object*): Unit = {
     Platform.runLater(() => {
       val jsonGameState = objects.apply(0).toString
       val gameState: JsValue = Json.parse(jsonGameState)
       val mapped: Map[String, Map[String, Int]] = gameState.as[Map[String, Map[String, Int]]]
-      DesktopVersion.generatePlayers(mapped)
+      DesktopGUI.generatePlayers(mapped)
     })
   }
 }
 
-object DesktopVersion extends JFXApp {
+object DesktopGUI extends JFXApp {
 
-  var socket: Socket = IO.socket("http://localhost:8080/")
-  socket.on("gameState", new HandleMessagesFromPython)
+  var socket2: Socket = IO.socket("http://localhost:8080/")
+  socket2.on("gameState", new HandleMessagesFromPython2)
 
-  socket.connect()
-  socket.emit("connect")
+  socket2.connect()
+  socket2.emit("connect")
 
   val gridWidth: Double = 30
   val gridHeight: Double = 30
@@ -48,10 +48,10 @@ object DesktopVersion extends JFXApp {
 
   def keyPressed(keyCode: KeyCode): Unit = {
     keyCode.getName match {
-      case "W" => socket.emit("keyStates", "w")
-      case "A" => socket.emit("keyStates", "a")
-      case "S" => socket.emit("keyStates", "s")
-      case "D" => socket.emit("keyStates", "d")
+      case "W" => socket2.emit("keyStates", "w")
+      case "A" => socket2.emit("keyStates", "a")
+      case "S" => socket2.emit("keyStates", "s")
+      case "D" => socket2.emit("keyStates", "d")
     }
   }
 
@@ -69,7 +69,7 @@ object DesktopVersion extends JFXApp {
     sceneGraphics.getChildren.clear()
     var sprite: Shape = null
     for((player, value) <- gameState){
-      if(socket.id() == player){
+      if(socket2.id() == player){
         sprite = playerSprite(value("x"), value("y"), Color.web("#FF4500"))
       }else{
         sprite = playerSprite(value("x"), value("y"), Color.web("#483D8B"))
@@ -106,7 +106,7 @@ object DesktopVersion extends JFXApp {
   }
 
   this.stage = new PrimaryStage {
-    this.title = "Desktop App1"
+    this.title = "Desktop App2"
     scene = new Scene(windowWidth, windowHeight) {
       content = List(sceneGrid, sceneGraphics)
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))
