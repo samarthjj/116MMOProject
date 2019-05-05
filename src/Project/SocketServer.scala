@@ -13,18 +13,18 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
 
   IO(Tcp) ! Bind(self, new InetSocketAddress("localhost", 8000))
 
-  var server: ActorRef = _
+  var server: Set[ActorRef] = Set()
   var buffer: String = ""
 
   override def receive: Receive = {
     case b: Bound => println("Listening on port: " + b.localAddress.getPort)
 
     case c: Connected =>
-      this.server = sender()
+      this.server = this.server + sender()
       sender() ! Register(self)
 
     case PeerClosed =>
-      this.server = _
+      this.server = this.server - sender()
 
     case r: Received =>
       buffer += r.data.utf8String
@@ -38,7 +38,7 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
       gameActor ! Send
 
     case gs: GameState =>
-      server ! Write(ByteString(gs.state + "~"))
+      this.server.foreach((client: ActorRef) => client ! Write(ByteString(gs.state + "~")))
   }
 
 

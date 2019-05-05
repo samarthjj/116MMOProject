@@ -1,6 +1,6 @@
 package Project.FrontEnd
 
-import javafx.scene.input.{KeyCode, KeyEvent}
+/*import javafx.scene.input.{KeyCode, KeyEvent}
 import scalafx.animation.AnimationTimer
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -105,4 +105,4 @@ object DesktopVersion extends JFXApp {
     AnimationTimer(update).start()
   }
 
-}
+}*/

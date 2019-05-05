@@ -2,7 +2,7 @@ import json
 import socket
 from threading import Thread
 
-from flask import Flask, send_from_directory, request, render_template
+from flask import Flask, send_from_directory, request
 from flask_socketio import SocketIO
 
 import eventlet
@@ -40,12 +40,12 @@ def send_to_scala(data):
     scala_socket.sendall((json.dumps(data) + delimiter).encode())
 
 
+#@app.route('/')
+#def index():
+#    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
+
+
 @app.route('/')
-def index():
-    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
-
-
-@app.route('/map', methods=['POST'])
 def game():
     return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'map.html')
 
