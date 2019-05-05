@@ -51,9 +51,8 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
       case "connected" => gameActor ! AddPlayer(username)
       case "disconnected" => gameActor ! RemovePlayer(username)
       case "move" =>
-        val x = (message \ "x").as[Double]
-        val y = (message \ "y").as[Double]
-        gameActor ! MovePlayer(username, x, y)
+        val key = (message \ "direction").as[String]
+        gameActor ! MovePlayer(username, key)
     }
   }
 
