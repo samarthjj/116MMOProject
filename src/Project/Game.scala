@@ -30,28 +30,28 @@ class Game {
     val inputLower = input.toLowerCase()
     if(inputLower == "w")
       {
-        if((player.yPosition - 1) != 0)
+        if((player.yPosition - 1) != -1)
           {
             player.yPosition -= 1
           }
       }
     else if(inputLower == "a")
       {
-        if((player.xPosition - 1) != 0)
+        if((player.xPosition - 1) != -1)
         {
           player.xPosition -= 1
         }
       }
     else if(inputLower == "s")
       {
-        if((player.yPosition + 1) != 19)
+        if((player.yPosition + 1) != 20)
         {
           player.yPosition += 1
         }
       }
     else if(inputLower == "d")
       {
-        if((player.xPosition + 1) != 38)
+        if((player.xPosition + 1) != 39)
         {
           player.xPosition += 1
         }
@@ -74,6 +74,7 @@ class Game {
     if (playerMap.keySet.contains(name))
     {
       playerMap -= name
+      spawnPlayer(name)
     }
   }
 

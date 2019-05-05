@@ -1,6 +1,6 @@
 package Project
 
-import akka.actor.{Actor, ActorRef, ActorSystem, Props}
+import akka.actor.Actor
 import objects.Player
 
 class TheActor extends Actor {
