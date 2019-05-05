@@ -2,76 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Game Demo</title>
-    <script src="FrontEndJS.js"></script>
-    <style>
-        #overlay {
-            position: fixed;
-            width: 100px;
-            height: 250px;
-            top: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 2;
-        }
-
-        ul {
-            list-style-type: none;
-            right: 0;
-            margin: 0;
-            padding: 0;
-            width: 200px;
-            text-shadow:
-                    -1px -1px 0 #000,
-                    1px -1px 0 #000,
-                    -1px 1px 0 #000,
-                    1px 1px 0 #000;
-        }
-
-        li a {
-            display: block;
-            padding: 8px 16px;
-            text-decoration: none;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 15px 25px;
-            font-size: 24px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            outline: none;
-            color: #fff;
-            background-color: #1487FF;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 9px #999;
-        }
-
-        .button:hover {background-color: #36738e
-        }
-
-        .button:active {
-            background-color: #11538e;
-            box-shadow: 0 5px #666;
-            transform: translateY(4px);
-        }
-    </style>
+    <title>THE MOST ADDICTIVE GAME</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 </head>
-<body style="background-color: #ccffd3">
-<div id="overlay">
-    <ul>
-        <li style="background-color: gainsboro; text-shadow: none">Leaderboard</li>
-        <li style="color: crimson">Player1: 12</li>
-        <li style="color: crimson">Player2: 9</li>
-        <li style="color: crimson">Player3: 4</li>
-        <li style="color: crimson">Player4: 2</li>
-    </ul>
-</div>
-<p id="p1" style="margin: 15px; line-height: 1.5; text-align: center;">Nickname:</p>
-<input type="text" name="Nickname" id="Nick" style="position: relative; left: 50%; margin-left: -75px; border-width: medium">
-<p style="margin: 15px; line-height: 1.5; text-align: center;"><button class="button" onclick="draw()" id="Butt">Play</button></p>
-<canvas id="myCanvas" height="640" width="1248">test</canvas>
+
+<body style="background-color: aquamarine">
+<canvas id="myCanvas"></canvas>
+<script src="FrontEndJS.js"></script>
 </body>
 </html>
