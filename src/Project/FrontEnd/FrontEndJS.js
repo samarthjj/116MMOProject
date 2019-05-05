@@ -9,10 +9,12 @@ ctx.globalCompositeOperation = 'source-over';
 function draw(event) {
     var gs = JSON.parse(event);
 
+    console.log(gs);
+
     loadGame();
 
     for(var player in gs){
-        if(player["id"] === socket.id) {
+        if(player === socket.id) {
             setPlayer(player["x"], player["y"], "#FF4500")
         }else{
             setPlayer(player["x"], player["y"], "#483d8b")
@@ -23,13 +25,12 @@ function draw(event) {
 function setPlayer(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * 32, y * 32, 32, 32);
+
 }
 
 function loadGame(){
     ctx.clearRect(0, 0, 1248, 640);
-    ctx.setAttribute("width", 1248);
-    ctx.setAttribute("height", 640);
-    ctx.strokeStyle = '#bbbbbb';
+    ctx.strokeStyle = '#000000';
     for(var i = 0; i < 40; i++){
         ctx.beginPath();
         ctx.moveTo(i * 32, 0);
