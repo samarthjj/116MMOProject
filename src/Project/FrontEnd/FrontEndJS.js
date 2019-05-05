@@ -12,12 +12,13 @@ function draw(event) {
     console.log(gs);
 
     loadGame();
+    //{name: {x: 1, y: 1, token: 1}}
 
     for(var player in gs){
         if(player === socket.id) {
-            setPlayer(player["x"], player["y"], "#FF4500")
+            setPlayer(gs[player]["x"], gs[player]["y"], "#FF4500")
         }else{
-            setPlayer(player["x"], player["y"], "#483d8b")
+            setPlayer(gs[player]["x"], gs[player]["y"], "#483D8B")
         }
     }
 }
@@ -25,7 +26,6 @@ function draw(event) {
 function setPlayer(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * 32, y * 32, 32, 32);
-
 }
 
 function loadGame(){
