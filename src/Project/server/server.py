@@ -29,6 +29,9 @@ def listen_to_scala(the_socket):
             get_from_scala(message)
 
 
+Thread(target=listen_to_scala, args=(scala_socket,)).start()
+
+
 def get_from_scala(data):
     socket_server.emit('gameState', data, broadcast=True)
 
@@ -66,5 +69,10 @@ def got_message():
     send_to_scala(message)
 
 
-app.run()
+@socket_server.on('keyStates')
+def key_state(wasd):
+    message = {"username": request.sid, "action": "move", "direction": wasd}
+    send_to_scala(message)
 
+
+socket_server.run(app, port=8080)

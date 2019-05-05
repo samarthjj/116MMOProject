@@ -71,8 +71,7 @@ object TCPSocketServer {
     val theActor = actorSystem.actorOf(Props(classOf[TheActor]))
     val server = actorSystem.actorOf(Props(classOf[SocketServer], theActor))
 
-    actorSystem.scheduler.schedule(16.milliseconds, 32.milliseconds, theActor, UpdateGame)
-    actorSystem.scheduler.schedule(32.milliseconds, 32.milliseconds, server, SendGameState)
+    actorSystem.scheduler.schedule(32.milliseconds, 32.milliseconds, server, Send)
   }
 
 }
