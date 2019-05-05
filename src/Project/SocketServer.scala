@@ -59,7 +59,7 @@ class SocketServer(gameActor: ActorRef) extends TheActor {
 }
 
 
-object TCPSocketServer {
+object SocketServer {
 
   def main(args: Array[String]): Unit = {
     val actorSystem = ActorSystem()
