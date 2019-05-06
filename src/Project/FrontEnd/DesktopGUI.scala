@@ -10,6 +10,7 @@ import io.socket.client.{IO, Socket}
 import io.socket.emitter.Emitter
 import javafx.application.Platform
 import play.api.libs.json.{JsValue, Json}
+import scalafx.scene.text.{Text, Font}
 
 class HandleMessagesFromPython2() extends Emitter.Listener {
   override def call(objects: Object*): Unit = {
@@ -65,6 +66,26 @@ object DesktopGUI extends JFXApp {
     }
   }
 
+  def playerScore1(xLocation: Int, yLocation: Int, score: Int): Text ={
+    new Text {
+      text = score.toString
+      font = Font.font("Arial", 14)
+      translateX = xLocation * gridWidth + 11
+      translateY = yLocation * gridHeight + 20
+      fill = Color.Black
+    }
+  }
+
+  def playerScore10(xLocation: Int, yLocation: Int, score: Int): Text ={
+    new Text {
+      text = score.toString
+      font = Font.font("Arial", 14)
+      translateX = xLocation * gridWidth + 7
+      translateY = yLocation * gridHeight + 20
+      fill = Color.Black
+    }
+  }
+
   def generatePlayers(gameState: Map[String, Map[String, Int]]): Unit = {
     sceneGraphics.getChildren.clear()
     var sprite: Shape = null
@@ -72,9 +93,14 @@ object DesktopGUI extends JFXApp {
       if(socket2.id() == player){
         sprite = playerSprite(value("x"), value("y"), Color.web("#FF4500"))
       }else{
-        sprite = playerSprite(value("x"), value("y"), Color.web("#483D8B"))
+        sprite = playerSprite(value("x"), value("y"), Color.web("#0080A0"))
       }
       sceneGraphics.children.add(sprite)
+      if(value("tokens") < 10) {
+        sceneGraphics.children.add(playerScore1(value("x"), value("y"), value("tokens")))
+      }else{
+        sceneGraphics.children.add(playerScore10(value("x"), value("y"), value("tokens")))
+      }
     }
   }
 
