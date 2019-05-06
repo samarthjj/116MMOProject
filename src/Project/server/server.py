@@ -40,12 +40,12 @@ def send_to_scala(data):
     scala_socket.sendall((json.dumps(data) + delimiter).encode())
 
 
-#@app.route('/')
-#def index():
-#    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
-
-
 @app.route('/')
+def index():
+    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
+
+
+@app.route('/map', methods=["POST"])
 def game():
     return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'map.html')
 
