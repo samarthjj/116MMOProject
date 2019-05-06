@@ -33,8 +33,8 @@ object DesktopGUI extends JFXApp {
   val gridWidth: Double = 30
   val gridHeight: Double = 30
 
-  val windowWidth: Double = gridWidth * 38
-  val windowHeight: Double = gridHeight * 19
+  val windowWidth: Double = gridWidth * 39
+  val windowHeight: Double = gridHeight * 20
 
   val playerSpriteSize: Double = 20
   val lineThickness = 0.1
@@ -59,8 +59,8 @@ object DesktopGUI extends JFXApp {
     new Rectangle {
       width = playerSpriteSize
       height = playerSpriteSize
-      translateX = (xLocation - 1) * gridWidth + 5
-      translateY = (yLocation - 1) * gridHeight + 5
+      translateX = xLocation * gridWidth + 5
+      translateY = yLocation * gridHeight + 5
       fill = color
     }
   }
