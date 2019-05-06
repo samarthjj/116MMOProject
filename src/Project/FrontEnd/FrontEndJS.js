@@ -16,7 +16,12 @@ function draw(event) {
         if(player === socket.id) {
             setPlayer(gs[player]["x"], gs[player]["y"], "#FF4500")
         }else{
-            setPlayer(gs[player]["x"], gs[player]["y"], "#483D8B")
+            setPlayer(gs[player]["x"], gs[player]["y"], "#0080A0")
+        }
+        if(parseInt(gs[player]["tokens"]) < 10) {
+            setToken1(gs[player]["x"], gs[player]["y"], gs[player]["tokens"]);
+        }else{
+            setToken10(gs[player]["x"], gs[player]["y"], gs[player]["tokens"]);
         }
     }
 }
@@ -24,6 +29,18 @@ function draw(event) {
 function setPlayer(x, y, color) {
     ctx.fillStyle = color;
     ctx.fillRect(x * 32, y * 32, 32, 32);
+}
+
+function setToken1(x, y, score){
+    ctx.font = "28px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(score.toString(), x * 32 + 8, y * 32 + 26)
+}
+
+function setToken10(x, y, score){
+    ctx.font = "28px Arial";
+    ctx.fillStyle = "black";
+    ctx.fillText(score.toString(), x * 32, y * 32 + 26)
 }
 
 function loadGame(){
