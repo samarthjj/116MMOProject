@@ -9,8 +9,6 @@ ctx.globalCompositeOperation = 'source-over';
 function draw(event) {
     var gs = JSON.parse(event);
 
-    console.log(gs);
-
     loadGame();
     //{name: {x: 1, y: 1, token: 1}}
 
