@@ -1,6 +1,5 @@
 package tests
 
-import Project.objects.Player
 import Project.Game
 import org.scalatest.FunSuite
 
