@@ -14,8 +14,7 @@ class Game {
 
   //SpawnPlayer assumes the given String is already not included in the larger Map of players
   //It's Goal is to create a player with x, y coordinates that is not along the border
-  def spawnPlayer(name: String): Unit =
-  {
+  def spawnPlayer(name: String): Unit = {
     val random = scala.util.Random
     val x: Int = 1 + random.nextInt((37 - 1) + 1)
     val y: Int = 1 + random.nextInt((18 - 1) + 1)
@@ -25,34 +24,25 @@ class Game {
     playerMap = playerMap + (name -> player)
   }
 
-  def move(input: String, player: Player): Unit =
-  {
+  def move(input: String, player: Player): Unit = {
     val inputLower = input.toLowerCase()
-    if(inputLower == "w")
-    {
-      if((player.yPosition - 1) != -1)
-      {
+    if(inputLower == "w") {
+      if((player.yPosition - 1) != -1) {
         player.yPosition -= 1
       }
     }
-    else if(inputLower == "a")
-    {
-      if((player.xPosition - 1) != -1)
-      {
+    else if(inputLower == "a") {
+      if((player.xPosition - 1) != -1) {
         player.xPosition -= 1
       }
     }
-    else if(inputLower == "s")
-    {
-      if((player.yPosition + 1) != 20)
-      {
+    else if(inputLower == "s") {
+      if((player.yPosition + 1) != 20) {
         player.yPosition += 1
       }
     }
-    else if(inputLower == "d")
-    {
-      if((player.xPosition + 1) != 39)
-      {
+    else if(inputLower == "d") {
+      if((player.xPosition + 1) != 39) {
         player.xPosition += 1
       }
     }
@@ -69,10 +59,8 @@ class Game {
     }
   }
 
-  def kill(name: String): Unit =
-  {
-    if (playerMap.keySet.contains(name))
-    {
+  def kill(name: String): Unit = {
+    if (playerMap.keySet.contains(name)){
       playerMap -= name
       spawnPlayer(name)
     }
@@ -116,8 +104,7 @@ class Game {
     Json.stringify(Json.toJson(jsonGS))
   }
 
-  def removePlayer(name: String): Unit =
-  {
+  def removePlayer(name: String): Unit = {
     playerMap -= name
   }
 }
