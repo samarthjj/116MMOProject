@@ -100,7 +100,6 @@ class Game {
       jsonGS += (name -> Json.toJson(Map("x" -> player.xPosition, "y" -> player.yPosition, "tokens" -> player.tokenAmount)))
     }
 
-    println(jsonGS)
     Json.stringify(Json.toJson(jsonGS))
   }
 
