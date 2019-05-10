@@ -1,6 +1,5 @@
 package tests
 
-import Project.objects.Player
 import Project.Game
 import org.scalatest.FunSuite
 
@@ -16,19 +15,20 @@ class TestSpawn extends FunSuite {
     for (i <- 0 to 10000) {
         val randomString: String = random.alphanumeric.take(10).mkString
         randomNameList = randomNameList :+ randomString
-      }
+    }
 
     //This for loop checks that the player created is in the larger dictionary
     for (x <- randomNameList) {
         game.spawnPlayer(x)
         assert(game.playerMap.keySet.contains(x), "tests if the player map contains the player with name")
-      }
+    }
+
     //this checks that each player in the dictionary didn't spawn on a wall
     for (y <- game.playerMap.values) {
         val xcord = y.xPosition
         val ycord = y.yPosition
         assert(checksOnWall(xcord, ycord), "testing if player spawns on the boundary")
-      }
+    }
   }
 
   def checksOnWall(xcord: Int, ycord: Int): Boolean = {

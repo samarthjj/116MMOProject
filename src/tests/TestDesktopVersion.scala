@@ -20,44 +20,13 @@ class TestDesktopVersion extends FunSuite{
 
     generatePlayers(mapped)
 
-    assert(sceneGraphics.children.size == 4)
+    assert(sceneGraphics.children.size == 2)
   }
 
   var socket: Socket = IO.socket("http://localhost:8080/")
-
-  val gridWidth: Double = 30
-  val gridHeight: Double = 30
-
-  val windowWidth: Double = gridWidth * 39
-  val windowHeight: Double = gridHeight * 20
-
-  val playerSpriteSize: Double = 20
-  val lineThickness = 0.1
-
-  var platformSprites: Map[Int, Shape] = Map[Int, Shape]()
-
   var sceneGraphics: Group = new Group {}
-  var sceneGrid: Group = new Group {}
 
-  def playerScore1(xLocation: Int, yLocation: Int, score: Int): Text ={
-    new Text {
-      text = score.toString
-      font = Font.font("Arial", 14)
-      translateX = xLocation * gridWidth + 11
-      translateY = yLocation * gridHeight + 20
-      fill = Color.Black
-    }
-  }
 
-  def playerScore10(xLocation: Int, yLocation: Int, score: Int): Text ={
-    new Text {
-      text = score.toString
-      font = Font.font("Arial", 14)
-      translateX = xLocation * gridWidth + 7
-      translateY = yLocation * gridHeight + 20
-      fill = Color.Black
-    }
-  }
 
   def generatePlayers(gameState: Map[String, Map[String, Int]]): Unit = {
     sceneGraphics.getChildren.clear()
@@ -69,11 +38,6 @@ class TestDesktopVersion extends FunSuite{
         sprite = playerSprite(value("x"), value("y"), Color.web("#0080A0"))
       }
       sceneGraphics.children.add(sprite)
-      if(value("tokens") < 10) {
-        sceneGraphics.children.add(playerScore1(value("x"), value("y"), value("tokens")))
-      }else{
-        sceneGraphics.children.add(playerScore10(value("x"), value("y"), value("tokens")))
-      }
     }
   }
 
