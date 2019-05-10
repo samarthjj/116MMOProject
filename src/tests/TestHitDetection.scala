@@ -20,8 +20,7 @@ class TestHitDetection extends FunSuite{
 
   //the same hitdetection method in Game but returns a boolean if the players are on the same tile
   //instead of initiating the fight and kill chain
-  def hitdetectionTest(player1: Player ,player2: Player): Boolean =
-  {
+  def hitdetectionTest(player1: Player ,player2: Player): Boolean = {
     player1.xPosition == player2.xPosition && player1.yPosition == player2.yPosition
   }
 

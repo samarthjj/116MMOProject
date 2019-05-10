@@ -19,8 +19,8 @@ class Game {
     val random = scala.util.Random
     val x: Int = 1 + random.nextInt((37 - 1) + 1)
     val y: Int = 1 + random.nextInt((18 - 1) + 1)
-      // this generates a random number between 1 and 37 for x (both inclusive)
-      // and a random number between 1 and 18 for y
+    // this generates a random number between 1 and 37 for x (both inclusive)
+    // and a random number between 1 and 18 for y
     val player: Player = new Player(name,x ,y)
     playerMap = playerMap + (name -> player)
   }
@@ -29,33 +29,33 @@ class Game {
   {
     val inputLower = input.toLowerCase()
     if(inputLower == "w")
+    {
+      if((player.yPosition - 1) != -1)
       {
-        if((player.yPosition - 1) != -1)
-          {
-            player.yPosition -= 1
-          }
+        player.yPosition -= 1
       }
+    }
     else if(inputLower == "a")
+    {
+      if((player.xPosition - 1) != -1)
       {
-        if((player.xPosition - 1) != -1)
-        {
-          player.xPosition -= 1
-        }
+        player.xPosition -= 1
       }
+    }
     else if(inputLower == "s")
+    {
+      if((player.yPosition + 1) != 20)
       {
-        if((player.yPosition + 1) != 20)
-        {
-          player.yPosition += 1
-        }
+        player.yPosition += 1
       }
+    }
     else if(inputLower == "d")
+    {
+      if((player.xPosition + 1) != 39)
       {
-        if((player.xPosition + 1) != 39)
-        {
-          player.xPosition += 1
-        }
+        player.xPosition += 1
       }
+    }
     for(player2 <- playerMap.values){
       if(player.name != player2.name){
         hitdetection(player, player2)
@@ -112,6 +112,7 @@ class Game {
       jsonGS += (name -> Json.toJson(Map("x" -> player.xPosition, "y" -> player.yPosition, "tokens" -> player.tokenAmount)))
     }
 
+    println(jsonGS)
     Json.stringify(Json.toJson(jsonGS))
   }
 

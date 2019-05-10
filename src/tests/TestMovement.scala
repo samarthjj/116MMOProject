@@ -15,32 +15,32 @@ class TestMovement extends FunSuite{
     //Testing Top Left Corner
     game.move("w", TopLeftCorner)
     game.move("a", TopLeftCorner)
-    assert(TopLeftCorner.xPosition == 1, "testing if you can move left when you are on the top left corner-not allowed")
-    assert(TopLeftCorner.yPosition == 1, "testing if you can move up if you are on the top left corner-not allowed")
+    assert(TopLeftCorner.xPosition == 0, "testing if you can move left when you are on the top left corner-not allowed")
+    assert(TopLeftCorner.yPosition == 0, "testing if you can move up if you are on the top left corner-not allowed")
     game.move("d", TopLeftCorner)
     game.move("s", TopLeftCorner)
-    assert(TopLeftCorner.xPosition == 2, "testing moving right when you are on the top left corner-allowed")
-    assert(TopLeftCorner.yPosition == 2, "testing moving down when you are on the top left corner-allowed")
+    assert(TopLeftCorner.xPosition == 1, "testing moving right when you are on the top left corner-allowed")
+    assert(TopLeftCorner.yPosition == 1, "testing moving down when you are on the top left corner-allowed")
 
     //Testing Bottom Left Corner
     game.move("s", BottomLeftCorner)
     game.move("a", BottomLeftCorner)
-    assert(BottomLeftCorner.xPosition == 1, "testing if you can move left when you are on the bottom left corner-not allowed")
-    assert(BottomLeftCorner.yPosition == 18, "testing if you can move down if you are on the bottom left corner-not allowed")
+    assert(BottomLeftCorner.xPosition == 0, "testing if you can move left when you are on the bottom left corner-not allowed")
+    assert(BottomLeftCorner.yPosition == 19, "testing if you can move down if you are on the bottom left corner-not allowed")
     game.move("d", BottomLeftCorner)
     game.move("w", BottomLeftCorner)
-    assert(BottomLeftCorner.xPosition == 2, "testing moving right when you are on the bottom left corner-allowed")
-    assert(BottomLeftCorner.yPosition == 17, "testing moving up when you are on the bottom left corner-allowed")
+    assert(BottomLeftCorner.xPosition == 1, "testing moving right when you are on the bottom left corner-allowed")
+    assert(BottomLeftCorner.yPosition == 18, "testing moving up when you are on the bottom left corner-allowed")
 
     //Testing Top Right Corner
     game.move("w", TopRightCorner)
     game.move("d", TopRightCorner)
-    assert(TopRightCorner.xPosition == 37, "testing if you can move right when you are on the top right corner-not allowed")
-    assert(TopRightCorner.yPosition == 1, "testing if you can move up if you are on the top right corner-not allowed")
+    assert(TopRightCorner.xPosition == 38, "testing if you can move right when you are on the top right corner-not allowed")
+    assert(TopRightCorner.yPosition == 0, "testing if you can move up if you are on the top right corner-not allowed")
     game.move("a", TopRightCorner)
     game.move("s", TopRightCorner)
-    assert(TopRightCorner.xPosition == 36, "testing moving left when you are on the top right corner-allowed")
-    assert(TopRightCorner.yPosition == 2, "testing moving down when you are on the top right corner-allowed")
+    assert(TopRightCorner.xPosition == 37, "testing moving left when you are on the top right corner-allowed")
+    assert(TopRightCorner.yPosition == 1, "testing moving down when you are on the top right corner-allowed")
 
     //Testing Bottom Right Corner
     game.move("s", BottomLeftCorner)
@@ -63,7 +63,7 @@ class TestMovement extends FunSuite{
     game.move("s", randomPlayer)// y at 3
     game.move("d", randomPlayer)// x at 2
     game.move("d", randomPlayer)// x at 3
-    assert(randomPlayer.xPosition == 3, "testing x position for random player")
-    assert(randomPlayer.yPosition == 3, "testing y position for random player")
+    assert(randomPlayer.xPosition == 2, "testing x position for random player")
+    assert(randomPlayer.yPosition == 2, "testing y position for random player")
   }
 }

@@ -132,7 +132,7 @@ object DesktopGUI extends JFXApp {
   }
 
   this.stage = new PrimaryStage {
-    this.title = "Desktop App2"
+    this.title = "Desktop GUI"
     scene = new Scene(windowWidth, windowHeight) {
       content = List(sceneGrid, sceneGraphics)
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))

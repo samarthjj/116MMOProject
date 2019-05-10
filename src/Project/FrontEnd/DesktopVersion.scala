@@ -132,7 +132,7 @@ object DesktopVersion extends JFXApp {
   }
 
   this.stage = new PrimaryStage {
-    this.title = "Desktop App1"
+    this.title = "Desktop Version"
     scene = new Scene(windowWidth, windowHeight) {
       content = List(sceneGrid, sceneGraphics)
       addEventHandler(KeyEvent.KEY_PRESSED, (event: KeyEvent) => keyPressed(event.getCode))

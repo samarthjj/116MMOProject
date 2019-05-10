@@ -4,12 +4,11 @@ import org.scalatest._
 import Project.Game
 import Project.objects._
 
-class TestKill extends FunSuite
-{
+class TestKill extends FunSuite {
   //this test will only test the function kill
   //meaning hit detection and fight will not be tested here and will be tested in a different class
-  test("testing kill")
-  {
+  test("testing kill") {
+
     val game = new Game
     val Sam: Player = new Player("Sam", 5, 5)
     val Dave: Player = new Player("Dave", 5, 5)
@@ -18,8 +17,7 @@ class TestKill extends FunSuite
     game.playerMap += ("Dave" -> Dave)
     game.playerMap += ("John" -> John)
 
-    def kill(name: String): Unit =
-    {
+    def kill(name: String): Unit = {
       if (game.playerMap.keySet.contains(name))
       {
         game.playerMap -= name
