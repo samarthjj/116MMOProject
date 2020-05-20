@@ -1,14 +1,12 @@
 package Project
 
 import akka.actor.Actor
-import objects.Player
 
 class TheActor extends Actor {
 
   val game: Game = new Game
 
-  override def receive: Receive =
-  {
+  override def receive: Receive = {
     case player: AddPlayer =>
       game.spawnPlayer(player.name)
     case remove: RemovePlayer =>

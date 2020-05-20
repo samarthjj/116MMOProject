@@ -1,7 +1,9 @@
 package Project
 
-import objects.Player
 import play.api.libs.json.{JsValue, Json}
+
+class Player (var name: String,  var xPosition: Int, var yPosition: Int) { var tokenAmount = 1 }
+
 
 class Game {
   /*

@@ -1,4 +1,3 @@
-
 var socket = io.connect({transports: ['websocket']});
 socket.on('gameState', draw);
 
@@ -44,6 +43,7 @@ function setToken10(x, y, score){
 }
 
 function loadGame(){
+    console.log("REACHED")
     ctx.clearRect(0, 0, 1248, 640);
     ctx.strokeStyle = '#000000';
     for(var i = 0; i < 40; i++){

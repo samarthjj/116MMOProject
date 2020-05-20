@@ -42,17 +42,17 @@ def send_to_scala(data):
 
 @app.route('/')
 def index():
-    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'index.html')
+    return send_from_directory('/Users/samarthjuneja/IdeaProjects/116MMOProject/src/Project/FrontEnd', 'index.html')
 
 
-@app.route('/map', methods=["POST"])
+@app.route('/mapp', methods=["POST"])
 def game():
-    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', 'map.html')
+    return send_from_directory('/Users/samarthjuneja/IdeaProjects/116MMOProject/src/Project/FrontEnd', 'map.html')
 
 
 @app.route('/<path:filename>')
 def static_files(filename):
-    return send_from_directory('/Users/connorwilson/Documents/GitHubLab2/src/Project/FrontEnd', filename)
+    return send_from_directory('/Users/samarthjuneja/IdeaProjects/116MMOProject/src/Project/FrontEnd', filename)
 
 
 @socket_server.on('disconnect')

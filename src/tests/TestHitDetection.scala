@@ -1,8 +1,7 @@
 package tests
 
 import org.scalatest._
-import Project.Game
-import Project.objects._
+import Project.Player
 
 class TestHitDetection extends FunSuite{
 

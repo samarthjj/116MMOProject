@@ -2,7 +2,7 @@ package tests
 
 import org.scalatest._
 import Project.Game
-import Project.objects._
+import Project.Player
 
 class TestKill extends FunSuite {
   //this test will only test the function kill

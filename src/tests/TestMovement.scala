@@ -1,7 +1,7 @@
 package tests
 
 import Project.Game
-import Project.objects.Player
+import Project.Player
 import org.scalatest._
 
 class TestMovement extends FunSuite{
